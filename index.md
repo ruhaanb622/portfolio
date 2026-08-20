@@ -5,7 +5,7 @@ hide: true
 show_reading_time: false
 ---
 
-Hi! My name is Ruhaan Bansal!
+Hi! My name is Ruhaan Bansal! I am taking AP Computer Science Principles this year.
 
 ### Development Environment
 
