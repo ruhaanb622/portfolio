@@ -52,8 +52,8 @@ comments: true
 
     .interest-card img {
         width: 100%;
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
+        aspect-ratio: 16 / 9;
+        object-fit: contain;
         display: block;
     }
 
@@ -155,8 +155,8 @@ comments: true
         <!-- TENNIS -->
         <div class="interest-card">
             <img
-                src="https://images.unsplash.com/photo-1709790576411-42681546b6d5?auto=format&fit=crop&w=1200&q=85"
-                alt="Outdoor tennis court"
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Roger_Federer_%2826_June_2009%2C_Wimbledon%29.jpg"
+                alt="Roger Federer playing at Wimbledon"
                 loading="lazy"
             >
 
@@ -174,8 +174,8 @@ comments: true
         <!-- FORMULA 1 -->
         <div class="interest-card">
             <img
-                src="https://images.unsplash.com/photo-1770471956155-0964f9f20c35?auto=format&fit=crop&w=1200&q=85"
-                alt="Formula 1 race car on track"
+                src="{{ '/images/verstappen-hamilton-rb16b-w12-clean.webp' | relative_url }}"
+                alt="Max Verstappen in the RB16B racing Lewis Hamilton in the Mercedes W12"
                 loading="lazy"
             >
 
