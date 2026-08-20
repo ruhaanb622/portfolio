@@ -1,138 +1,325 @@
 ---
 layout: post
-title: About
+title: About Me
 permalink: /about/
 comments: true
 ---
 
-## As a conversation Starter
-
-Here are some places I have lived.
-
-<comment>
-Flags are made using Wikipedia images
-</comment>
-
 <style>
-    /* Style looks pretty compact, 
-       - grid-container and grid-item are referenced the code 
-    */
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic columns */
-        gap: 10px;
-    }
-    .grid-item {
-        text-align: center;
-    }
-    .grid-item img {
-        width: 100%;
-        height: 100px; /* Fixed height for uniformity */
-        object-fit: contain; /* Ensure the image fits within the fixed height */
-    }
-    .grid-item p {
-        margin: 5px 0; /* Add some margin for spacing */
+    .about-page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 10px 15px 40px;
     }
 
-    .image-gallery {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 10px;
+    .about-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 35px;
+    }
+
+    .about-intro h2 {
+        margin-bottom: 15px;
+        font-size: 2rem;
+    }
+
+    .about-intro p {
+        line-height: 1.7;
+        margin: 10px 0;
+    }
+
+    .interest-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+        margin: 30px auto 45px;
+    }
+
+    .interest-card {
+        background: #181818;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        overflow: hidden;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .interest-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .interest-card img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        display: block;
+    }
+
+    .interest-content {
+        padding: 18px;
+    }
+
+    .interest-content h3 {
+        margin: 0 0 10px;
+        font-size: 1.3rem;
+    }
+
+    .interest-content p {
+        margin: 0;
+        line-height: 1.6;
+        opacity: 0.9;
+    }
+
+    .about-section {
+        margin-top: 45px;
+    }
+
+    .about-section h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .about-section p {
+        line-height: 1.7;
+        max-width: 800px;
+        margin: 10px auto;
+    }
+
+    .quick-facts {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #181818;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 20px 30px;
+    }
+
+    .quick-facts ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .quick-facts li {
+        margin: 12px 0;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 700px) {
+        .interest-grid {
+            grid-template-columns: 1fr;
         }
 
-    .image-gallery img {
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
+        .about-intro h2 {
+            font-size: 1.7rem;
+        }
+
+        .quick-facts {
+            padding: 18px 20px;
+        }
     }
 </style>
 
-<!-- This grid_container class is used by CSS styling and the id is used by JavaScript connection -->
-<div class="grid-container" id="grid_container">
-    <!-- content will be added here by JavaScript -->
-</div>
+<div class="about-page">
 
-<script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
+    <!-- INTRO -->
+    <div class="about-intro">
+        <h2>👋 About Me</h2>
 
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
-    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
-    var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"},
-        {"flag": "b/b9/Flag_of_Oregon.svg", "greeting": "Hi", "description": "Oregon - 9 years"},
-        {"flag": "b/be/Flag_of_England.svg", "greeting": "Alright mate", "description": "England - 2 years"},
-        {"flag": "e/ef/Flag_of_Hawaii.svg", "greeting": "Aloha", "description": "Hawaii - 2 years"},
-    ];
+        <p>
+            Hey! I'm from India and I've lived in San Diego throughout my life.
+            I'm interested in technology, coding, sports, and gaming.
+        </p>
 
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
+        <p>
+            I'm currently taking
+            <strong>AP Computer Science Principles (AP CSP)</strong>.
+            I started getting into computer science during my freshman year
+            when I took <strong>CSSE</strong>.
+        </p>
 
-    // 3b. Build grid items inside of our container for each row of data
-    for (const location of living_in_the_world) {
-        // Create a "div" with "class grid-item" for each row
-        var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
-        var img = document.createElement("img");
-        img.src = http_source + location.flag; // concatenate the source and flag
-        img.alt = location.flag + " Flag"; // add alt text for accessibility
+        <p>
+            Since then, I've enjoyed learning how to code, building projects,
+            and figuring out how technology works.
+            Outside of coding, I enjoy playing <strong>tennis</strong>,
+            watching <strong>Formula 1</strong>, and playing
+            <strong>video games</strong>.
+        </p>
+    </div>
 
-        // Add "p" HTML tag for the description
-        var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
 
-        // Add "p" HTML tag for the greeting
-        var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
+    <!-- INTEREST CARDS -->
+    <div class="interest-grid">
 
-        // Append img and p HTML tags to the grid item DIV
-        gridItem.appendChild(img);
-        gridItem.appendChild(description);
-        gridItem.appendChild(greeting);
+        <!-- TENNIS -->
+        <div class="interest-card">
+            <img
+                src="https://images.unsplash.com/photo-1709790576411-42681546b6d5?auto=format&fit=crop&w=1200&q=85"
+                alt="Outdoor tennis court"
+                loading="lazy"
+            >
 
-        // Append the grid item DIV to the container DIV
-        container.appendChild(gridItem);
-    }
-</script>
+            <div class="interest-content">
+                <h3>🎾 Tennis</h3>
 
-### Journey through Life
+                <p>
+                    Tennis is one of my favorite sports.
+                    I enjoy playing, competing, and improving my game.
+                </p>
+            </div>
+        </div>
 
-Here is what I did at those places
 
-- 🏫 Lots of Elementary Schools in Tucson, LA, Honolulu, and Glendale (CA)
-- 🏫 Middle and High School in Glendale (CA), Hoover High graduated '77
-- 🎓 Glendale CA Community College, UCLA Extension, LA Wilshire Computer Tech School '77 to '79
-- ⛪ England, London Missionary for Church of Jesus Christ of Latter-day Saints '79 to '81
-- 💼 Culver City, Glendale CA founder at Ashton-Tate, original PC's dBase 2 and 3 '82 to '87
-- 🎓 Eugene Oregon Undergraduate CompSci Degree at University of Oregon (Go Ducks!) '89 to '91
-- 💼 Eugene Oregon, founder and owner @ Microniche `88, Point Control CAD CAM developer '91 to '96
-- 🏢 San Diego CA Qualcomm, Satellite Comm and 1st Mobile OS (BREW) '96 to '19
-- 👨‍🏫 San Diego CA Teacher of Computer Science @ Del Norte High School San Diego '19 to present
+        <!-- FORMULA 1 -->
+        <div class="interest-card">
+            <img
+                src="https://images.unsplash.com/photo-1770471956155-0964f9f20c35?auto=format&fit=crop&w=1200&q=85"
+                alt="Formula 1 race car on track"
+                loading="lazy"
+            >
 
-### Culture, Family, and Fun
+            <div class="interest-content">
+                <h3>🏎️ Formula 1</h3>
 
-Everything for me, as for many others, revolves around family and faith.
+                <p>
+                    I'm a big Formula 1 fan.
+                    I like the racing, strategy, engineering,
+                    speed, and technology behind the sport.
+                </p>
+            </div>
+        </div>
 
-- My mother told me that I was Danish, English. and Irish, here is my researched [family tree]({{site.baseurl}}/images/about/familytree.png)
-- My family is pretty big as I have been married twice, my 1st wife passed away.  We have had 5 kids, 4 adopted by me, 1 biological.  Plus, there are three grandkids.  My name to my grandkids is Abuilito.
-- The gallery of pics has some of my family, fun, culture and faith memories.
 
-<comment>
-Gallery of Pics, scroll to the right for more ...
-</comment>
-<div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/missionary.jpg" alt="Image 1">
-  <img src="{{site.baseurl}}/images/about/john_tamara.jpg" alt="Image 2">
-  <img src="{{site.baseurl}}/images/about/tamara_fam.jpg" alt="Image 3">
-  <img src="{{site.baseurl}}/images/about/surf.jpg" alt="Image 4">
-  <img src="{{site.baseurl}}/images/about/john_lora.jpg" alt="Image 5">
-  <img src="{{site.baseurl}}/images/about/lora_fam.jpg" alt="Image 6">
-  <img src="{{site.baseurl}}/images/about/lora_fam2.jpg" alt="Image 7">
-  <img src="{{site.baseurl}}/images/about/pj_party.jpg" alt="Image 8">
-  <img src="{{site.baseurl}}/images/about/trent_family.png" alt="Image 9">
-  <img src="{{site.baseurl}}/images/about/claire.jpg" alt="Image 10">
-  <img src="{{site.baseurl}}/images/about/grandkids.jpg" alt="Image 11">
-  <img src="{{site.baseurl}}/images/about/farm.jpg" alt="Image 12">
+        <!-- CODING -->
+        <div class="interest-card">
+            <img
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85"
+                alt="Laptop displaying programming code"
+                loading="lazy"
+            >
+
+            <div class="interest-content">
+                <h3>💻 Coding</h3>
+
+                <p>
+                    I started coding through CSSE during freshman year.
+                    Now I'm continuing with AP CSP and working on
+                    different coding projects.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- GAMING -->
+        <div class="interest-card">
+            <img
+                src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1200&q=85"
+                alt="Gaming setup"
+                loading="lazy"
+            >
+
+            <div class="interest-content">
+                <h3>🎮 Video Games</h3>
+
+                <p>
+                    I like playing video games in my free time.
+                    I enjoy both competitive games and games where
+                    I can just chill and have fun.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- QUICK FACTS -->
+    <div class="about-section">
+        <h2>🙋 A Little More About Me</h2>
+
+        <div class="quick-facts">
+            <ul>
+                <li>
+                    🇮🇳 <strong>Background:</strong>
+                    I'm from India
+                </li>
+
+                <li>
+                    🌴 <strong>Home:</strong>
+                    I've lived in San Diego throughout my life
+                </li>
+
+                <li>
+                    💻 <strong>Current Class:</strong>
+                    AP Computer Science Principles
+                </li>
+
+                <li>
+                    👨‍💻 <strong>Computer Science:</strong>
+                    Took CSSE during freshman year
+                </li>
+
+                <li>
+                    🎾 <strong>Sport:</strong>
+                    Tennis
+                </li>
+
+                <li>
+                    🏎️ <strong>Motorsport:</strong>
+                    Formula 1
+                </li>
+
+                <li>
+                    🎮 <strong>Free Time:</strong>
+                    Playing video games
+                </li>
+
+                <li>
+                    🚀 <strong>I Enjoy:</strong>
+                    Coding, technology, and building projects
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- CODING JOURNEY -->
+    <div class="about-section">
+        <h2>💻 My Coding Journey</h2>
+
+        <p>
+            My interest in computer science started during my freshman year
+            when I took CSSE. I liked being able to use code to solve problems
+            and create things of my own.
+        </p>
+
+        <p>
+            Now I'm taking AP CSP and continuing to learn more about
+            programming, algorithms, data, the internet, and how computer
+            science is used in the real world.
+        </p>
+
+        <p>
+            I want to keep improving my coding skills and build more projects
+            as I learn.
+        </p>
+    </div>
+
+
+    <!-- OUTSIDE CODING -->
+    <div class="about-section">
+        <h2>🎾 🏎️ 🎮 Outside of Coding</h2>
+
+        <p>
+            When I'm not coding, I like playing tennis, watching Formula 1,
+            and playing video games.
+        </p>
+
+        <p>
+            I enjoy the competition in tennis and gaming, and I like Formula 1
+            because it combines racing with strategy, engineering,
+            and technology.
+        </p>
+    </div>
+
 </div>
