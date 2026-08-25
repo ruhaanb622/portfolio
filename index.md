@@ -22,25 +22,13 @@ show_reading_time: false
 }
 .home-hero {
   position: relative;
-  overflow: hidden;
-  padding: clamp(32px, 7vw, 76px);
-  border: 1px solid var(--home-border);
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at 86% 15%, rgba(112,230,255,.24), transparent 32%),
-    radial-gradient(circle at 10% 95%, rgba(184,255,106,.14), transparent 34%),
-    linear-gradient(140deg, #111a2a 0%, var(--home-bg) 70%);
+  padding: 18px 0 30px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 .home-hero::after {
-  content: "";
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  right: -120px;
-  bottom: -150px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 50%;
-  box-shadow: 0 0 0 34px rgba(255,255,255,.025), 0 0 0 68px rgba(255,255,255,.018);
+  display: none;
 }
 .home-kicker {
   margin: 0 0 12px;
@@ -55,9 +43,9 @@ show_reading_time: false
   z-index: 1;
   max-width: 780px;
   margin: 0;
-  font-size: clamp(2.6rem, 8vw, 5.8rem);
-  line-height: .97;
-  letter-spacing: -.055em;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -.025em;
 }
 .home-hero h1 span { color: var(--home-lime); }
 .home-lede {
@@ -66,8 +54,8 @@ show_reading_time: false
   max-width: 700px;
   margin: 22px 0 0;
   color: var(--home-muted);
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 .home-actions {
   position: relative;
@@ -135,7 +123,7 @@ show_reading_time: false
 }
 .home-section-head h2 {
   margin: 0;
-  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
 }
 .home-section-head p {
   max-width: 580px;
@@ -234,7 +222,7 @@ show_reading_time: false
 @media (max-width: 560px) {
   .learning-map, .project-grid, .tool-grid, .home-stats { grid-template-columns: 1fr; }
   .workflow { grid-template-columns: 1fr 1fr; }
-  .home-hero { border-radius: 22px; }
+  .home-hero { padding-top: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-button, .learning-card, .project-card, .tool-card { transition: none; }
