@@ -1,12 +1,8 @@
 import { baseurl, pythonURI, fetchOptions } from './config.js';
 
-console.log("login.js loaded");
-
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Base URL:", baseurl); // Debugging line
     getCredentials(baseurl) // Call the function to get credentials
         .then(data => {
-            console.log("Credentials data:", data); // Debugging line
             const loginArea = document.getElementById('loginArea');
             if (data) { // Update the login area based on the data
                 loginArea.innerHTML = `
@@ -78,12 +74,11 @@ function getCredentials(baseurl) {
     })
     .then(data => {
         if (data === null) return null;
-        console.log("User data:", data);
         return data;
     })
     .catch(err => {
-        console.error("Fetch error: ", err);
-        // Return null instead of throwing to handle the error gracefully
+        console.info("Authentication service unavailable; using guest navigation.");
+        // Return null so public pages still render the guest navigation cleanly.
         return null;
     });
 }
