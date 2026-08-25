@@ -168,12 +168,292 @@ comments: true
             padding: 18px 20px;
         }
     }
+
+    /* Advanced portfolio enhancements */
+    .about-page {
+        --about-panel: #111827;
+        --about-panel-2: #151d2b;
+        --about-border: rgba(255, 255, 255, 0.11);
+        --about-text: #f7f9fc;
+        --about-muted: #aeb9cb;
+        --about-cyan: #70e6ff;
+        --about-lime: #b8ff6a;
+        --about-pink: #ff7ab8;
+        color: var(--about-text);
+    }
+
+    .profile-hero {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 18px;
+        padding: clamp(30px, 7vw, 72px);
+        border: 1px solid var(--about-border);
+        border-radius: 28px;
+        background:
+            radial-gradient(circle at 84% 16%, rgba(112, 230, 255, 0.24), transparent 31%),
+            radial-gradient(circle at 8% 94%, rgba(184, 255, 106, 0.13), transparent 34%),
+            linear-gradient(140deg, #111a2a, #090d15 72%);
+    }
+
+    .profile-kicker {
+        margin: 0 0 12px;
+        color: var(--about-cyan);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .profile-hero h1 {
+        max-width: 790px;
+        margin: 0;
+        font-size: clamp(2.6rem, 8vw, 5.5rem);
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+    }
+
+    .profile-hero h1 span { color: var(--about-lime); }
+
+    .profile-hero > p:not(.profile-kicker) {
+        max-width: 710px;
+        margin: 22px 0 0;
+        color: var(--about-muted);
+        font-size: 1.05rem;
+        line-height: 1.75;
+    }
+
+    .profile-actions,
+    .about-jump,
+    .interest-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .profile-actions { margin-top: 26px; }
+
+    .profile-link,
+    .jump-link,
+    .filter-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 15px;
+        border: 1px solid var(--about-border);
+        border-radius: 999px;
+        color: var(--about-text);
+        background: rgba(255, 255, 255, 0.045);
+        text-decoration: none;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .profile-link.primary {
+        border-color: transparent;
+        color: #081018;
+        background: var(--about-lime);
+    }
+
+    .profile-link:hover,
+    .profile-link:focus-visible,
+    .jump-link:hover,
+    .jump-link:focus-visible,
+    .filter-button:hover,
+    .filter-button:focus-visible,
+    .filter-button[aria-pressed="true"] {
+        transform: translateY(-2px);
+        border-color: var(--about-cyan);
+        background: rgba(112, 230, 255, 0.12);
+    }
+
+    .profile-link.primary:hover,
+    .profile-link.primary:focus-visible { background: #d2ff9f; }
+
+    .about-jump {
+        position: sticky;
+        z-index: 5;
+        top: 10px;
+        margin: 0 0 34px;
+        padding: 10px;
+        border: 1px solid var(--about-border);
+        border-radius: 18px;
+        background: rgba(9, 13, 21, 0.86);
+        backdrop-filter: blur(16px);
+    }
+
+    .jump-link { min-height: 36px; font-size: 0.84rem; }
+
+    .about-intro {
+        padding: clamp(22px, 5vw, 38px);
+        border: 1px solid var(--about-border);
+        border-radius: 22px;
+        background: var(--about-panel);
+    }
+
+    .interest-toolbar {
+        align-items: center;
+        justify-content: center;
+        margin: 0 0 18px;
+    }
+
+    .filter-button { font: inherit; min-height: 38px; }
+
+    .interest-card[hidden] { display: none; }
+
+    .focus-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 20px;
+        margin-top: 45px;
+    }
+
+    .focus-card,
+    .timeline-card {
+        padding: clamp(22px, 4vw, 32px);
+        border: 1px solid var(--about-border);
+        border-radius: 22px;
+        background: var(--about-panel);
+    }
+
+    .focus-card h2,
+    .timeline-card h2 { margin: 0 0 12px; }
+
+    .focus-card p,
+    .timeline-card p,
+    .timeline-card li { color: var(--about-muted); line-height: 1.7; }
+
+    .build-steps {
+        display: grid;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .build-step {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border: 1px solid var(--about-border);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .build-step span {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        color: #081018;
+        background: var(--about-lime);
+        font-weight: 900;
+    }
+
+    .build-step strong { display: block; margin-bottom: 3px; }
+    .build-step small { color: var(--about-muted); }
+
+    .timeline-list {
+        position: relative;
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .timeline-list::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        bottom: 8px;
+        left: 7px;
+        width: 2px;
+        background: linear-gradient(var(--about-cyan), var(--about-pink));
+    }
+
+    .timeline-list li {
+        position: relative;
+        padding: 0 0 20px 32px;
+    }
+
+    .timeline-list li::before {
+        content: "";
+        position: absolute;
+        top: 7px;
+        left: 1px;
+        width: 14px;
+        height: 14px;
+        border: 3px solid var(--about-panel);
+        border-radius: 50%;
+        background: var(--about-cyan);
+        box-shadow: 0 0 0 1px var(--about-border);
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .about-section { scroll-margin-top: 90px; }
+
+    @media (max-width: 820px) {
+        .focus-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+        .about-jump { position: static; }
+        .jump-link { flex: 1 1 42%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .profile-link,
+        .jump-link,
+        .filter-button,
+        .interest-card,
+        .flag-card,
+        .roots-card img { transition: none; }
+    }
+
 </style>
 
 <div class="about-page">
 
+    <section class="profile-hero" aria-labelledby="profile-title">
+        <p class="profile-kicker">Student developer · AP CSP · San Diego</p>
+        <h1 id="profile-title">Building with code, curiosity, and <span>evidence.</span></h1>
+        <p>
+            I’m Ruhaan Bansal. I enjoy turning interests like tennis, Formula 1,
+            and gaming into opportunities to learn design, algorithms, and
+            software development. This page is both my story and a working
+            example of responsive CSS, accessible HTML, and JavaScript DOM
+            manipulation.
+        </p>
+        <div class="profile-actions">
+            <a class="profile-link primary" href="#current-focus">See what I’m building</a>
+            <a class="profile-link" href="{{ '/github-pages-learning/' | relative_url }}">GitHub Pages guide</a>
+            <a class="profile-link" href="https://github.com/ruhaanb622/portfolio">View source</a>
+        </div>
+    </section>
+
+    <nav class="about-jump" aria-label="About page sections">
+        <a class="jump-link" href="#story">Story</a>
+        <a class="jump-link" href="#interests">Interests</a>
+        <a class="jump-link" href="#current-focus">Current focus</a>
+        <a class="jump-link" href="#places">Places</a>
+        <a class="jump-link" href="#roots">Roots</a>
+        <a class="jump-link" href="#journey">Coding journey</a>
+    </nav>
+
     <!-- INTRO -->
-    <div class="about-intro">
+    <div class="about-intro" id="story">
         <h2>👋 About Me</h2>
 
         <p>
@@ -199,10 +479,21 @@ comments: true
 
 
     <!-- INTEREST CARDS -->
-    <div class="interest-grid">
+    <div class="about-section" id="interests">
+        <h2>Explore My Interests</h2>
+        <p>Use the filters to focus the grid. Every card remains keyboard accessible and the layout adapts to smaller screens.</p>
+        <div class="interest-toolbar" role="group" aria-label="Filter interests">
+            <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter="sport" aria-pressed="false">Sport</button>
+            <button class="filter-button" type="button" data-filter="technology" aria-pressed="false">Technology</button>
+            <button class="filter-button" type="button" data-filter="gaming" aria-pressed="false">Gaming</button>
+        </div>
+        <p class="sr-only" id="interest-status" aria-live="polite"></p>
+
+    <div class="interest-grid" id="interest-grid">
 
         <!-- TENNIS -->
-        <div class="interest-card">
+        <div class="interest-card" data-interest="sport">
             <img
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Roger_Federer_%2826_June_2009%2C_Wimbledon%29.jpg"
                 alt="Roger Federer playing at Wimbledon"
@@ -221,7 +512,7 @@ comments: true
 
 
         <!-- FORMULA 1 -->
-        <div class="interest-card">
+        <div class="interest-card" data-interest="sport">
             <img
                 src="{{ '/images/verstappen-hamilton-rb16b-w12-clean.webp' | relative_url }}"
                 alt="Max Verstappen in the RB16B racing Lewis Hamilton in the Mercedes W12"
@@ -241,7 +532,7 @@ comments: true
 
 
         <!-- CODING -->
-        <div class="interest-card">
+        <div class="interest-card" data-interest="technology">
             <img
                 src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85"
                 alt="Laptop displaying programming code"
@@ -261,7 +552,7 @@ comments: true
 
 
         <!-- GAMING -->
-        <div class="interest-card">
+        <div class="interest-card" data-interest="gaming">
             <img
                 src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1200&q=85"
                 alt="Gaming setup"
@@ -280,11 +571,39 @@ comments: true
         </div>
 
     </div>
+    </div>
 
+    <div class="focus-grid" id="current-focus">
+        <section class="focus-card">
+            <p class="profile-kicker">Current build direction</p>
+            <h2>Tennis equipment recommender</h2>
+            <p>
+                My team is planning a tool that turns player experience, playing
+                style, comfort needs, and budget into explainable racquet,
+                string, and grip recommendations.
+            </p>
+            <div class="build-steps">
+                <div class="build-step"><span>1</span><div><strong>Discover</strong><small>Define questions, product attributes, and transparent rules.</small></div></div>
+                <div class="build-step"><span>2</span><div><strong>Build</strong><small>Create the data model, recommendation logic, and interface.</small></div></div>
+                <div class="build-step"><span>3</span><div><strong>Validate</strong><small>Test edge cases, collect feedback, and document evidence.</small></div></div>
+            </div>
+        </section>
+
+        <section class="timeline-card">
+            <p class="profile-kicker">Learning timeline</p>
+            <h2>From first code to team software</h2>
+            <ul class="timeline-list">
+                <li><strong>CSSE</strong><br>Started coding and learned to create with software.</li>
+                <li><strong>Ground 0</strong><br>Built a repeatable VS Code, Git, GitHub, Actions, and Pages workflow.</li>
+                <li><strong>Checkpoint 1</strong><br>Mapped one algorithm across pseudocode, Python, and JavaScript.</li>
+                <li><strong>Next</strong><br>Move from individual evidence to a shared team product.</li>
+            </ul>
+        </section>
+    </div>
 
 
     <!-- INTERACTIVE FLAG GRID -->
-    <div class="about-section">
+    <div class="about-section" id="places">
         <h2>Places That Shaped Me</h2>
         <p>
             My story connects the place I call home with the culture and
@@ -328,8 +647,43 @@ comments: true
             flagGrid.appendChild(card);
         });
     </script>
+
+    <script>
+        (function () {
+            const buttons = Array.from(document.querySelectorAll("[data-filter]"));
+            const cards = Array.from(document.querySelectorAll("[data-interest]"));
+            const status = document.getElementById("interest-status");
+
+            function applyFilter(filter) {
+                let visible = 0;
+
+                cards.forEach((card) => {
+                    const show = filter === "all" || card.dataset.interest === filter;
+                    card.hidden = !show;
+                    if (show) visible += 1;
+                });
+
+                buttons.forEach((button) => {
+                    button.setAttribute(
+                        "aria-pressed",
+                        String(button.dataset.filter === filter)
+                    );
+                });
+
+                status.textContent = visible + " interest cards displayed.";
+            }
+
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    applyFilter(button.dataset.filter);
+                });
+            });
+
+            applyFilter("all");
+        })();
+    </script>
     <!-- ROOTS AND FAVORITES -->
-    <div class="about-section">
+    <div class="about-section" id="roots">
         <h2>Roots &amp; Favorites</h2>
         <p>San Diego is home, my Indian heritage is a big part of who I am, and paneer tikka masala with warm naan is my all-time favorite meal.</p>
         <div class="roots-grid">
@@ -398,7 +752,7 @@ comments: true
 
 
     <!-- CODING JOURNEY -->
-    <div class="about-section">
+    <div class="about-section" id="journey">
         <h2>💻 My Coding Journey</h2>
 
         <p>
