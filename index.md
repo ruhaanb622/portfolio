@@ -8,8 +8,8 @@ show_reading_time: false
 <style>
 .portfolio-home {
   --home-bg: #090d15;
-  --home-panel: #111827;
-  --home-panel-2: #151d2b;
+  --home-panel: #181818;
+  --home-panel-2: #181818;
   --home-border: rgba(255,255,255,.11);
   --home-text: #f7f9fc;
   --home-muted: #aeb9cb;

@@ -171,8 +171,8 @@ comments: true
 
     /* Advanced portfolio enhancements */
     .about-page {
-        --about-panel: #111827;
-        --about-panel-2: #151d2b;
+        --about-panel: #181818;
+        --about-panel-2: #181818;
         --about-border: rgba(255, 255, 255, 0.11);
         --about-text: #f7f9fc;
         --about-muted: #aeb9cb;
@@ -275,7 +275,7 @@ comments: true
         padding: 10px;
         border: 1px solid var(--about-border);
         border-radius: 18px;
-        background: rgba(9, 13, 21, 0.86);
+        background: rgba(24, 24, 24, 0.92);
         backdrop-filter: blur(16px);
     }
 
