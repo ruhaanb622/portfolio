@@ -590,8 +590,8 @@ comments: true
             <h2>From first code to team software</h2>
             <ul class="timeline-list">
                 <li><strong>CSSE</strong><br>Started coding and learned to create with software.</li>
-                <li><strong>Ground 0</strong><br>Built a repeatable VS Code, Git, GitHub, Actions, and Pages workflow.</li>
                 <li><strong>Checkpoint 1</strong><br>Mapped one algorithm across pseudocode, Python, and JavaScript.</li>
+                <li><strong>Ground 0</strong><br>Built a repeatable VS Code, Git, GitHub, Actions, and Pages workflow.</li>
                 <li><strong>Next</strong><br>Move from individual evidence to a shared team product.</li>
             </ul>
         </section>
