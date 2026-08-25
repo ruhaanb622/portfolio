@@ -87,6 +87,53 @@ comments: true
         margin: 10px auto;
     }
 
+    .flag-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        margin: 24px auto 0;
+    }
+
+    .flag-card {
+        padding: 20px;
+        text-align: center;
+        background: #181818;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .flag-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .flag-card img {
+        width: 100%;
+        height: 130px;
+        object-fit: contain;
+        margin-bottom: 14px;
+        border-radius: 6px;
+    }
+
+    .flag-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.25rem;
+    }
+
+    .flag-card p {
+        margin: 0;
+        line-height: 1.5;
+    }
+    .roots-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin:24px auto 0; }
+    .roots-card { position:relative; min-height:300px; overflow:hidden; border-radius:18px; border:1px solid rgba(255,255,255,.12); background:#151515; isolation:isolate; }
+    .roots-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; transition:transform .45s ease; }
+    .roots-card::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.95) 100%); }
+    .roots-card:hover img { transform:scale(1.06); }
+    .roots-copy { position:absolute; inset:auto 20px 20px; }
+    .roots-copy span { display:inline-block; margin-bottom:8px; padding:5px 9px; border-radius:999px; background:rgba(255,255,255,.16); backdrop-filter:blur(8px); font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .roots-copy h3 { margin:0 0 6px; font-size:1.35rem; }
+    .roots-copy p { margin:0; line-height:1.5; }
     .quick-facts {
         max-width: 700px;
         margin: 0 auto;
@@ -115,7 +162,9 @@ comments: true
             font-size: 1.7rem;
         }
 
-        .quick-facts {
+            .roots-grid { grid-template-columns: 1fr; }
+
+    .quick-facts {
             padding: 18px 20px;
         }
     }
@@ -128,7 +177,7 @@ comments: true
         <h2>👋 About Me</h2>
 
         <p>
-            Hey! I'm from India and I've lived in San Diego throughout my life.
+            Hey! I was born and raised here in San Diego, and my family is originally from India.
             I'm interested in technology, coding, sports, and gaming.
         </p>
 
@@ -233,6 +282,71 @@ comments: true
     </div>
 
 
+
+    <!-- INTERACTIVE FLAG GRID -->
+    <div class="about-section">
+        <h2>Places That Shaped Me</h2>
+        <p>
+            My story connects the place I call home with the culture and
+            traditions my family comes from.
+        </p>
+        <div id="flag-grid" class="flag-grid" aria-live="polite"></div>
+    </div>
+
+    <script>
+        const placesThatShapedMe = [
+            {
+                flag: "https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg",
+                greeting: "Hey from California!",
+                description: "San Diego is the city where I was born and raised."
+            },
+            {
+                flag: "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+                greeting: "Namaste from India!",
+                description: "India is where my family is from and an important part of my heritage."
+            }
+        ];
+
+        const flagGrid = document.getElementById("flag-grid");
+
+        placesThatShapedMe.forEach((place) => {
+            const card = document.createElement("article");
+            card.className = "flag-card";
+
+            const flag = document.createElement("img");
+            flag.src = place.flag;
+            flag.alt = `${place.greeting.replace("!", "")} flag`;
+            flag.loading = "lazy";
+
+            const greeting = document.createElement("h3");
+            greeting.textContent = place.greeting;
+
+            const description = document.createElement("p");
+            description.textContent = place.description;
+
+            card.append(flag, greeting, description);
+            flagGrid.appendChild(card);
+        });
+    </script>
+    <!-- ROOTS AND FAVORITES -->
+    <div class="about-section">
+        <h2>Roots &amp; Favorites</h2>
+        <p>San Diego is home, my Indian heritage is a big part of who I am, and paneer tikka masala with warm naan is my all-time favorite meal.</p>
+        <div class="roots-grid">
+            <article class="roots-card">
+                <img src="https://images.unsplash.com/photo-1603725117928-6f09697f34aa?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="San Diego skyline across the bay" loading="lazy">
+                <div class="roots-copy"><span>Born &amp; raised</span><h3>San Diego, California</h3><p>Sunny skies, the coast, and the city I have always called home.</p></div>
+            </article>
+            <article class="roots-card">
+                <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="The Taj Mahal in India" loading="lazy">
+                <div class="roots-copy"><span>My heritage</span><h3>Indian roots</h3><p>My family is originally from India, a culture I am proud to be connected to.</p></div>
+            </article>
+            <article class="roots-card">
+                <img src="https://www.cookwithmanali.com/wp-content/uploads/2014/04/Paneer-Tikka-Masala-Recipe-676x1024.jpg" alt="Paneer tikka masala served with naan" loading="lazy">
+                <div class="roots-copy"><span>Favorite food</span><h3>Paneer tikka masala + naan</h3><p>Rich, spicy, creamy, and even better with fresh naan.</p></div>
+            </article>
+        </div>
+    </div>
     <!-- QUICK FACTS -->
     <div class="about-section">
         <h2>🙋 A Little More About Me</h2>
@@ -241,12 +355,12 @@ comments: true
             <ul>
                 <li>
                     🇮🇳 <strong>Background:</strong>
-                    I'm from India
+                    My family is originally from India
                 </li>
 
                 <li>
                     🌴 <strong>Home:</strong>
-                    I've lived in San Diego throughout my life
+                    I was born and raised in San Diego
                 </li>
 
                 <li>

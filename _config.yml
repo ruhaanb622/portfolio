@@ -14,13 +14,13 @@
 #   in _config.yml. It will appear in your document head meta (for Google search
 #   results) and in your feed.xml site description.
 
-title: Open Coding 
-description: "Class of 2026"
-owner_name: John Mortensen
-github_username: jm1021 
-github_repo: "portfolio" 
-baseurl: "/portfolio" 
-future: true
+title: Ruhaan Bansal's AP CSP Portfolio
+description: "AP CSP Portfolio — 2026–2027"
+owner_name: Ruhaan Bansal
+github_username: ruhaanb622
+github_repo: portfolio
+baseurl: /portfolio
+future: true 
 
 # Build settings
 # --------------
