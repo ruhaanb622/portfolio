@@ -184,15 +184,11 @@ comments: true
 
     .profile-hero {
         position: relative;
-        overflow: hidden;
         margin-bottom: 18px;
-        padding: clamp(30px, 7vw, 72px);
-        border: 1px solid var(--about-border);
-        border-radius: 28px;
-        background:
-            radial-gradient(circle at 84% 16%, rgba(112, 230, 255, 0.24), transparent 31%),
-            radial-gradient(circle at 8% 94%, rgba(184, 255, 106, 0.13), transparent 34%),
-            linear-gradient(140deg, #111a2a, #090d15 72%);
+        padding: 18px 0 26px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
     }
 
     .profile-kicker {
@@ -207,9 +203,9 @@ comments: true
     .profile-hero h1 {
         max-width: 790px;
         margin: 0;
-        font-size: clamp(2.6rem, 8vw, 5.5rem);
-        line-height: 0.98;
-        letter-spacing: -0.055em;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        line-height: 1.12;
+        letter-spacing: -0.025em;
     }
 
     .profile-hero h1 span { color: var(--about-lime); }
@@ -218,8 +214,8 @@ comments: true
         max-width: 710px;
         margin: 22px 0 0;
         color: var(--about-muted);
-        font-size: 1.05rem;
-        line-height: 1.75;
+        font-size: 1rem;
+        line-height: 1.65;
     }
 
     .profile-actions,
