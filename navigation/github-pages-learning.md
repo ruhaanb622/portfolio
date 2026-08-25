@@ -7,7 +7,7 @@ comments: true
 
 <style>
 .learning-guide {
-  --guide-panel: #121722;
+  --guide-panel: #181818;
   --guide-border: rgba(255,255,255,.11);
   --guide-text: #f5f7fb;
   --guide-muted: #aeb8ca;
@@ -20,13 +20,10 @@ comments: true
 .guide-hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(28px, 6vw, 64px);
-  border: 1px solid var(--guide-border);
-  border-radius: 26px;
-  background:
-    radial-gradient(circle at 90% 10%, rgba(113,229,255,.22), transparent 34%),
-    radial-gradient(circle at 8% 92%, rgba(184,255,106,.14), transparent 32%),
-    linear-gradient(135deg, #111827, #090d15);
+  padding: 18px 0 28px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 .guide-kicker {
   margin: 0 0 10px;
@@ -69,7 +66,7 @@ comments: true
 .guide-nav a:focus-visible {
   transform: translateY(-2px);
   border-color: var(--guide-accent);
-  background: rgba(113,229,255,.08);
+  background: rgba(255,255,255,.06);
 }
 .guide-topic {
   margin: 18px 0;
