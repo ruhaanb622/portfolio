@@ -386,6 +386,105 @@ comments: true
         box-shadow: 0 0 0 1px var(--about-border);
     }
 
+    .workflow-grid,
+    .skill-grid,
+    .goal-grid {
+        display: grid;
+        gap: 16px;
+        margin-top: 22px;
+    }
+
+    .workflow-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .skill-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .goal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .workflow-card,
+    .skill-card,
+    .goal-card {
+        padding: 20px;
+        border: 1px solid var(--about-border);
+        border-radius: 18px;
+        background: var(--about-panel);
+    }
+
+    .workflow-card h3,
+    .skill-card h3,
+    .goal-card h3 {
+        margin: 8px 0;
+        font-size: 1.08rem;
+    }
+
+    .workflow-card p,
+    .skill-card p,
+    .goal-card p {
+        margin: 0;
+        color: var(--about-muted);
+        line-height: 1.65;
+    }
+
+    .workflow-number,
+    .goal-status {
+        color: var(--about-cyan);
+        font-size: 0.76rem;
+        font-weight: 850;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .skill-tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 4px 10px;
+        border: 1px solid var(--about-border);
+        border-radius: 999px;
+        color: var(--about-text);
+        background: rgba(255, 255, 255, 0.035);
+        font-size: 0.82rem;
+    }
+
+    .evidence-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .evidence-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 7px 14px;
+        border: 1px solid var(--about-border);
+        border-radius: 999px;
+        color: var(--about-cyan);
+        background: rgba(255, 255, 255, 0.03);
+        font-weight: 750;
+        text-decoration: none;
+    }
+
+    .evidence-link:hover,
+    .evidence-link:focus-visible {
+        border-color: var(--about-cyan);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
     .sr-only {
         position: absolute;
         width: 1px;
@@ -401,12 +500,18 @@ comments: true
     .about-section { scroll-margin-top: 90px; }
 
     @media (max-width: 820px) {
-        .focus-grid { grid-template-columns: 1fr; }
+        .focus-grid,
+        .workflow-grid,
+        .goal-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 560px) {
         .about-jump { position: static; }
         .jump-link { flex: 1 1 42%; }
+        .focus-grid,
+        .workflow-grid,
+        .skill-grid,
+        .goal-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -443,6 +548,8 @@ comments: true
         <a class="jump-link" href="#story">Story</a>
         <a class="jump-link" href="#interests">Interests</a>
         <a class="jump-link" href="#current-focus">Current focus</a>
+        <a class="jump-link" href="#workflow">Workflow</a>
+        <a class="jump-link" href="#goals">Goals</a>
         <a class="jump-link" href="#places">Places</a>
         <a class="jump-link" href="#roots">Roots</a>
         <a class="jump-link" href="#journey">Coding journey</a>
@@ -596,6 +703,113 @@ comments: true
             </ul>
         </section>
     </div>
+
+    <!-- DEVELOPMENT WORKFLOW -->
+    <section class="about-section" id="workflow" aria-labelledby="workflow-heading">
+        <h2 id="workflow-heading">How I Build</h2>
+        <p>
+            My best work follows a repeatable process. Each stage leaves evidence
+            that helps me explain the result, recover from mistakes, and improve
+            the next version instead of treating a finished page as the whole story.
+        </p>
+
+        <div class="workflow-grid">
+            <article class="workflow-card">
+                <span class="workflow-number">01 · Plan</span>
+                <h3>Define the purpose</h3>
+                <p>I begin with the user, the required outcome, and the evidence needed for review.</p>
+            </article>
+            <article class="workflow-card">
+                <span class="workflow-number">02 · Build</span>
+                <h3>Create in small steps</h3>
+                <p>I use VS Code and focused changes so each part is understandable and testable.</p>
+            </article>
+            <article class="workflow-card">
+                <span class="workflow-number">03 · Debug</span>
+                <h3>Investigate the cause</h3>
+                <p>I compare expected and actual behavior, isolate the failure, and retest the correction.</p>
+            </article>
+            <article class="workflow-card">
+                <span class="workflow-number">04 · Verify</span>
+                <h3>Publish with evidence</h3>
+                <p>I review the diff, inspect GitHub Actions, test the live page, and document what changed.</p>
+            </article>
+        </div>
+
+        <div class="skill-grid" aria-label="Skills and tools">
+            <article class="skill-card">
+                <h3>Languages and logic</h3>
+                <p>I practice expressing the same idea clearly across different environments.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pseudocode</span>
+                    <span class="skill-tag">Algorithms</span>
+                </div>
+            </article>
+            <article class="skill-card">
+                <h3>Portfolio development</h3>
+                <p>I combine readable content, semantic structure, responsive styling, and interaction.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Markdown</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">Jekyll</span>
+                </div>
+            </article>
+            <article class="skill-card">
+                <h3>Engineering workflow</h3>
+                <p>I connect local development to version history, automated builds, and live verification.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Actions</span>
+                </div>
+            </article>
+            <article class="skill-card">
+                <h3>Responsible AI use</h3>
+                <p>I use AI for ideas and debugging, then rerun, compare, correct, and explain the output myself.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Prompting</span>
+                    <span class="skill-tag">Verification</span>
+                    <span class="skill-tag">Reflection</span>
+                </div>
+            </article>
+        </div>
+
+        <div class="evidence-links" aria-label="Development evidence">
+            <a class="evidence-link" href="https://github.com/ruhaanb622/portfolio/issues/1">Checkpoint 1 evidence</a>
+            <a class="evidence-link" href="https://github.com/ruhaanb622/portfolio/issues/2">Ground 0 evidence</a>
+            <a class="evidence-link" href="{{ '/github-pages-learning/' | relative_url }}">GitHub Pages guide</a>
+        </div>
+    </section>
+
+    <!-- NEXT GOALS -->
+    <section class="about-section" id="goals" aria-labelledby="goals-heading">
+        <h2 id="goals-heading">What I’m Working Toward</h2>
+        <p>
+            These goals move my portfolio from individual practice toward a
+            collaborative product with transparent decisions and useful testing.
+        </p>
+        <div class="goal-grid">
+            <article class="goal-card">
+                <span class="goal-status">Collaboration</span>
+                <h3>Build with the team</h3>
+                <p>Create a shared repository and backlog, divide ownership, and use review instead of completing every part alone.</p>
+            </article>
+            <article class="goal-card">
+                <span class="goal-status">Product</span>
+                <h3>Prototype the recommender</h3>
+                <p>Turn the tennis questionnaire into explainable racquet, string, and grip recommendation rules.</p>
+            </article>
+            <article class="goal-card">
+                <span class="goal-status">Communication</span>
+                <h3>Explain decisions earlier</h3>
+                <p>Share progress and blockers, ask for feedback sooner, and document why each important choice was made.</p>
+            </article>
+        </div>
+    </section>
 
 
     <!-- INTERACTIVE FLAG GRID -->
