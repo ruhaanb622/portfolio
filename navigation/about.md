@@ -814,7 +814,7 @@ comments: true
 
     <!-- INTERACTIVE FLAG GRID -->
     <div class="about-section" id="places">
-        <h2>Places That Shaped Me</h2>
+        <h2>Places  That Shaped Me</h2>
         <p>
             My story connects the place I call home with the culture and
             traditions my family comes from.
