@@ -28,6 +28,59 @@ comments: true
         margin: 10px 0;
     }
 
+    .photo-gallery {
+        margin: 45px 0;
+        scroll-margin-top: 90px;
+    }
+
+    .photo-gallery h2 {
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    .photo-gallery > p {
+        max-width: 700px;
+        margin: 0 auto;
+        color: #aeb9cb;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .photo-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 24px;
+    }
+
+    .photo-gallery-card {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: 18px;
+        background: #181818;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .photo-gallery-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+    }
+
+    .photo-gallery-card:hover img {
+        transform: scale(1.025);
+    }
+
+    .photo-gallery-card figcaption {
+        padding: 14px 16px;
+        color: #aeb9cb;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
     .interest-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -546,6 +599,7 @@ comments: true
 
     <nav class="about-jump" aria-label="About page sections">
         <a class="jump-link" href="#story">Story</a>
+        <a class="jump-link" href="#gallery">Gallery</a>
         <a class="jump-link" href="#interests">Interests</a>
         <a class="jump-link" href="#current-focus">Current focus</a>
         <a class="jump-link" href="#workflow">Workflow</a>
@@ -579,6 +633,35 @@ comments: true
             <strong>video games</strong>.
         </p>
     </div>
+
+
+    <!-- PHOTO GALLERY -->
+    <section class="photo-gallery" id="gallery" aria-labelledby="gallery-heading">
+        <h2 id="gallery-heading">📷 Photo Gallery</h2>
+        <p>A couple of moments from life outside the code editor.</p>
+        <div class="photo-gallery-grid">
+            <figure class="photo-gallery-card">
+                <img
+                    src="{{ '/images/about/ruhaan-outdoors-1.webp' | relative_url }}"
+                    alt="Ruhaan taking a selfie outdoors under a bright blue sky"
+                    width="620"
+                    height="826"
+                    loading="lazy"
+                >
+                <figcaption>Outside under a bright blue sky.</figcaption>
+            </figure>
+            <figure class="photo-gallery-card">
+                <img
+                    src="{{ '/images/about/ruhaan-outdoors-2.webp' | relative_url }}"
+                    alt="Ruhaan taking a selfie outdoors wearing an Under Armour shirt"
+                    width="620"
+                    height="826"
+                    loading="lazy"
+                >
+                <figcaption>A sunny day outdoors.</figcaption>
+            </figure>
+        </div>
+    </section>
 
 
     <!-- INTEREST CARDS -->
