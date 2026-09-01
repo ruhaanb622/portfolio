@@ -185,10 +185,41 @@ show_reading_time: false
   line-height: 1.58;
 }
 .card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: .5rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 38px;
   margin-top: auto;
-  padding-top: 18px;
+  padding: 8px 12px;
+  border: 2px solid currentColor;
+  border-radius: 6px;
   color: var(--card-accent, var(--home-cyan));
-  font-weight: 850;
+  background: transparent;
+  font-family: var(--pref-font-family);
+  font-size: var(--pref-font-size);
+  font-weight: 700;
+  text-align: center;
+  white-space: normal;
+  transition: background .2s ease, transform .2s ease;
+}
+.card-arrow::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 1rem;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.5a6.5 6.5 0 1 0 4.6 11.1A6.5 6.5 0 0 0 8 1.5zm0-1.5a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm1 4 4 4-4 4V9H4V7h5V4z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.5a6.5 6.5 0 1 0 4.6 11.1A6.5 6.5 0 0 0 8 1.5zm0-1.5a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm1 4 4 4-4 4V9H4V7h5V4z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.learning-card:hover .card-arrow,
+.project-card:hover .card-arrow,
+.tool-card:hover .card-arrow {
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  transform: scale(1.05);
 }
 .workflow {
   display: grid;
@@ -239,10 +270,31 @@ show_reading_time: false
       projects, mistakes, design decisions, and reflections that turn each
       sprint into visible growth.
     </p>
-    <div class="home-actions">
-      <a class="home-button primary" href="{{ '/about/' | relative_url }}">Explore my story</a>
-      <a class="home-button" href="{{ '/github-pages-learning/' | relative_url }}">Open the learning guide</a>
-      <a class="home-button" href="https://github.com/ruhaanb622/portfolio">View source</a>
+    <div class="home-actions ocs__links">
+      <a class="ocs__btn ocs__btn--icon alert-green" href="{{ '/about/' | relative_url }}">
+        <span class="ocs__btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-4.42 0-8 2.01-8 4.5V16h16v-1.5C16 12.01 12.42 10 8 10z"/>
+          </svg>
+        </span>
+        <span>Explore my story</span>
+      </a>
+      <a class="ocs__btn ocs__btn--icon alert-yellow" href="{{ '/github-pages-learning/' | relative_url }}">
+        <span class="ocs__btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 2.5C1 1.67 1.67 1 2.5 1H7v13H2.5A1.5 1.5 0 0 0 1 15.5v-13zM9 1h4.5c.83 0 1.5.67 1.5 1.5v13a1.5 1.5 0 0 0-1.5-1.5H9V1z"/>
+          </svg>
+        </span>
+        <span>Open the learning guide</span>
+      </a>
+      <a class="ocs__btn ocs__btn--icon alert-red" href="https://github.com/ruhaanb622/portfolio">
+        <span class="ocs__btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+        </span>
+        <span>View source</span>
+      </a>
     </div>
     <div class="home-stats" aria-label="Portfolio status">
       <div class="home-stat"><strong>3 languages</strong><span>Pseudocode · Python · JavaScript</span></div>
