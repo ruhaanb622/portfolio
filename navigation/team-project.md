@@ -7,187 +7,428 @@ comments: true
 
 <style>
 .project-evidence {
-  --evidence-panel: #181818;
-  --evidence-border: rgba(255, 255, 255, 0.11);
-  --evidence-text: #f7f9fc;
-  --evidence-muted: #aeb9cb;
-  --evidence-accent: #70e6ff;
-  --evidence-ready: #b8ff6a;
-  max-width: 1000px;
+  --panel: #171b24;
+  --panel-soft: #11151d;
+  --border: rgba(255, 255, 255, 0.11);
+  --text: #f7f9fc;
+  --muted: #abb6c8;
+  --cyan: #70e6ff;
+  --lime: #b8ff6a;
+  --amber: #ffd479;
+  max-width: 1020px;
   margin: 0 auto;
-  color: var(--evidence-text);
+  color: var(--text);
+}
+.project-evidence * {
+  box-sizing: border-box;
 }
 .evidence-hero {
-  padding: 1rem 0 2rem;
+  padding: 1.5rem 0 2.75rem;
 }
 .evidence-kicker {
-  margin: 0 0 0.7rem;
-  color: var(--evidence-accent);
-  font-size: 0.78rem;
+  margin: 0 0 0.75rem;
+  color: var(--cyan);
+  font-size: 0.76rem;
   font-weight: 850;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
-.evidence-hero h2 {
+.evidence-hero h1 {
+  max-width: 780px;
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.4rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.25rem, 6vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
 }
 .evidence-lede {
   max-width: 760px;
-  margin: 1.1rem 0 0;
-  color: var(--evidence-muted);
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  font-size: 1.02rem;
   line-height: 1.7;
 }
 .evidence-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin-top: 1.5rem;
+  margin-top: 1.6rem;
 }
 .evidence-button {
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  padding: 0.4rem 0.95rem;
-  border: 1px solid var(--evidence-border);
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  color: var(--evidence-text) !important;
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--text) !important;
+  background: rgba(255, 255, 255, 0.045);
   text-decoration: none !important;
-  font-weight: 750;
+  font-weight: 780;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.evidence-button:hover,
+.evidence-button:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--cyan);
+  background: rgba(112, 230, 255, 0.1);
 }
 .evidence-button.primary {
   border-color: transparent;
-  color: #081018 !important;
-  background: var(--evidence-ready);
+  color: #07130f !important;
+  background: var(--lime);
 }
-.evidence-grid {
+.evidence-section {
+  margin: 0 0 3.25rem;
+}
+.section-heading {
+  margin: 0 0 1rem;
+}
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  letter-spacing: -0.02em;
+}
+.section-heading p {
+  max-width: 720px;
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.summary-grid,
+.future-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  margin: 1rem 0 2.5rem;
 }
-.evidence-card {
+.summary-card,
+.future-card {
+  min-width: 0;
   padding: 1.2rem;
-  border: 1px solid var(--evidence-border);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  background: var(--evidence-panel);
+  background: linear-gradient(145deg, var(--panel), var(--panel-soft));
 }
-.evidence-card h3 {
-  margin: 0 0 0.45rem;
+.summary-card h3,
+.future-card h3 {
+  margin: 0.5rem 0 0.45rem;
+  font-size: 1.02rem;
 }
-.evidence-card p {
-  margin-bottom: 0;
-  color: var(--evidence-muted);
+.summary-card p,
+.future-card p {
+  margin: 0;
+  color: var(--muted);
   line-height: 1.55;
 }
-.evidence-status {
-  color: var(--evidence-ready) !important;
-  font-size: 0.8rem;
+.status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0.18rem 0.58rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.evidence-note {
-  margin: 1rem 0 2.2rem;
-  padding: 1.1rem 1.3rem;
-  border-left: 4px solid var(--evidence-accent);
-  border-radius: 0 14px 14px 0;
-  color: var(--evidence-muted);
-  background: var(--evidence-panel);
+.status.done {
+  color: #07130f;
+  background: var(--lime);
 }
-.evidence-table {
-  display: block;
-  overflow-x: auto;
+.status.active {
+  color: #081018;
+  background: var(--cyan);
+}
+.status.later {
+  color: #1c1300;
+  background: var(--amber);
+}
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 0.85rem;
+}
+.timeline::before {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 15px;
+  width: 2px;
+  background: rgba(112, 230, 255, 0.26);
+  content: "";
+}
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 1.1rem;
+  padding: 1.1rem 1.2rem 1.1rem 2.7rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+}
+.timeline-item::before {
+  position: absolute;
+  top: 24px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--panel);
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0 1px rgba(112, 230, 255, 0.45);
+  content: "";
+}
+.timeline-date {
+  color: var(--cyan);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+.timeline-copy h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+.timeline-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.timeline-copy a {
+  display: inline-block;
+  margin-top: 0.55rem;
+  color: var(--cyan);
+  font-weight: 750;
+}
+.responsibility-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.responsibility-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--muted);
+  background: var(--panel);
+  line-height: 1.55;
+}
+.responsibility-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  color: #081018;
+  background: var(--cyan);
+  font-weight: 900;
+}
+.responsibility-list a {
+  color: var(--cyan);
+  font-weight: 750;
+}
+.purpose-note {
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--cyan);
+  border-radius: 14px;
+  color: var(--muted);
+  background: var(--panel);
+  line-height: 1.65;
+}
+.future-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.future-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+}
+.future-card h3 {
+  margin-top: 0;
 }
 @media (max-width: 760px) {
-  .evidence-grid {
+  .summary-grid,
+  .future-grid {
     grid-template-columns: 1fr;
+  }
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .evidence-actions {
+    display: grid;
+  }
+  .evidence-button {
+    width: 100%;
   }
 }
 </style>
 
 <div class="project-evidence">
-  <section class="evidence-hero">
+  <header class="evidence-hero">
     <p class="evidence-kicker">Individual collaboration evidence</p>
-    <h2>Team workspace and my Scrum role</h2>
+    <h1>Team workspace and my Scrum role</h1>
     <p class="evidence-lede">
       I serve as the Scrum Master / Developer for a three-person AP CSP team with
       Arya Taghavi Zargar and Deyar Raissadat. This page records my individual
       planning, development, testing, and collaboration evidence as it is completed.
     </p>
-    <div class="evidence-actions">
+    <nav class="evidence-actions" aria-label="Team evidence links">
       <a class="evidence-button primary" href="https://ruhaanb622.github.io/group-portfolio/">Group portfolio</a>
       <a class="evidence-button" href="https://github.com/ruhaanb622/group-portfolio">Group repository</a>
       <a class="evidence-button" href="https://github.com/ruhaanb622/group-portfolio/issues/1">Workspace Big Issue</a>
+    </nav>
+  </header>
+
+  <section class="evidence-section" aria-labelledby="current-evidence">
+    <div class="section-heading">
+      <h2 id="current-evidence">Current role and evidence</h2>
+      <p>Confirmed setup work only. Project-specific work will be recorded after approval.</p>
+    </div>
+    <div class="summary-grid">
+      <article class="summary-card">
+        <span class="status done">Completed</span>
+        <h3>Repository creation</h3>
+        <p>I created the shared repository from the Open Coding Society portfolio template.</p>
+      </article>
+      <article class="summary-card">
+        <span class="status done">Completed</span>
+        <h3>Deployment setup</h3>
+        <p>I enabled GitHub Actions so the Jekyll portfolio builds and deploys with GitHub Pages.</p>
+      </article>
+      <article class="summary-card">
+        <span class="status active">In progress</span>
+        <h3>Scrum coordination</h3>
+        <p>I own the deployment/access check and the three-column Kanban board setup.</p>
+      </article>
     </div>
   </section>
 
-  <h2>Current role and evidence</h2>
-  <div class="evidence-grid">
-    <article class="evidence-card">
-      <p class="evidence-status">Completed</p>
-      <h3>Repository creation</h3>
-      <p>I created the shared repository from the Open Coding Society portfolio template.</p>
-    </article>
-    <article class="evidence-card">
-      <p class="evidence-status">Completed</p>
-      <h3>Deployment setup</h3>
-      <p>I enabled GitHub Actions so the Jekyll portfolio can build and deploy with GitHub Pages.</p>
-    </article>
-    <article class="evidence-card">
-      <p class="evidence-status">In progress</p>
-      <h3>Scrum coordination</h3>
-      <p>I own the initial deployment/access check and the three-column Kanban board setup.</p>
-    </article>
-  </div>
+  <section class="evidence-section" aria-labelledby="collaboration-history">
+    <div class="section-heading">
+      <h2 id="collaboration-history">Collaboration History</h2>
+      <p>A chronological record of my confirmed setup and coordination work.</p>
+    </div>
+    <div class="timeline">
+      <article class="timeline-item">
+        <div class="timeline-date">Sept. 1, 2026</div>
+        <div class="timeline-copy">
+          <h3>Created the shared portfolio repository</h3>
+          <p>Acted as repository owner and Scrum Master during initial setup.</p>
+          <a href="https://github.com/ruhaanb622/group-portfolio">View repository →</a>
+        </div>
+      </article>
+      <article class="timeline-item">
+        <div class="timeline-date">Sept. 1, 2026</div>
+        <div class="timeline-copy">
+          <h3>Enabled the deployment workflow</h3>
+          <p>Configured GitHub Actions and confirmed a successful Pages deployment.</p>
+          <a href="https://github.com/ruhaanb622/group-portfolio/actions/runs/33560828608">View workflow →</a>
+        </div>
+      </article>
+      <article class="timeline-item">
+        <div class="timeline-date">Sept. 1, 2026</div>
+        <div class="timeline-copy">
+          <h3>Organized the workspace setup</h3>
+          <p>Established the neutral Big Issue and linked setup-task structure.</p>
+          <a href="https://github.com/ruhaanb622/group-portfolio/issues/1">View Big Issue →</a>
+        </div>
+      </article>
+      <article class="timeline-item">
+        <div class="timeline-date">Sept. 1, 2026</div>
+        <div class="timeline-copy">
+          <h3>Accepted initial Scrum responsibilities</h3>
+          <p>Own the deployment/access check and the three-column board setup.</p>
+          <a href="https://github.com/ruhaanb622/group-portfolio/issues/2">Issue #2</a>
+          <span aria-hidden="true"> · </span>
+          <a href="https://github.com/ruhaanb622/group-portfolio/issues/3">Issue #3</a>
+        </div>
+      </article>
+    </div>
+  </section>
 
-  <h2>Collaboration History</h2>
+  <section class="evidence-section" aria-labelledby="responsibilities">
+    <div class="section-heading">
+      <h2 id="responsibilities">Current responsibilities</h2>
+      <p>Active responsibilities for the repository-setup phase.</p>
+    </div>
+    <ol class="responsibility-list">
+      <li>
+        <span class="responsibility-number">1</span>
+        <div>Confirm the published portfolio and teammate repository access in <a href="https://github.com/ruhaanb622/group-portfolio/issues/2">issue #2</a>.</div>
+      </li>
+      <li>
+        <span class="responsibility-number">2</span>
+        <div>Create a board with exactly <strong>To Do</strong>, <strong>Doing</strong>, and <strong>Done</strong> in <a href="https://github.com/ruhaanb622/group-portfolio/issues/3">issue #3</a>.</div>
+      </li>
+      <li>
+        <span class="responsibility-number">3</span>
+        <div>Maintain one owner per task and no more than one active card per person.</div>
+      </li>
+      <li>
+        <span class="responsibility-number">4</span>
+        <div>Record real blockers, team resolutions, and future development evidence.</div>
+      </li>
+    </ol>
+  </section>
 
-  <div class="evidence-table">
+  <section class="evidence-section" aria-labelledby="function-purpose">
+    <div class="section-heading">
+      <h2 id="function-purpose">Function and Purpose</h2>
+    </div>
+    <div class="purpose-note">
+      The team has not selected or approved a program direction yet. The user,
+      problem statement, success statement, and out-of-scope statement will be
+      documented here only after that decision is made.
+    </div>
+  </section>
 
-  | Date | Activity | My responsibility | Evidence |
-  |---|---|---|---|
-  | Sept. 1, 2026 | Created the shared team portfolio repository | Repository owner and Scrum Master | [Repository](https://github.com/ruhaanb622/group-portfolio) |
-  | Sept. 1, 2026 | Enabled the GitHub Pages workflow | Deployment setup | [Successful workflow](https://github.com/ruhaanb622/group-portfolio/actions/runs/33560828608) |
-  | Sept. 1, 2026 | Organized the neutral workspace setup | Big Issue and task ownership | [Big Issue #1](https://github.com/ruhaanb622/group-portfolio/issues/1) |
-  | Sept. 1, 2026 | Accepted initial Scrum responsibilities | Deployment/access and board setup | [Issue #2](https://github.com/ruhaanb622/group-portfolio/issues/2) · [Issue #3](https://github.com/ruhaanb622/group-portfolio/issues/3) |
-
-  </div>
-
-  <h2>Current responsibilities</h2>
-
-  - Confirm the published team portfolio and teammate repository access in [issue #2](https://github.com/ruhaanb622/group-portfolio/issues/2).
-  - Create the board with exactly **To Do**, **Doing**, and **Done** in [issue #3](https://github.com/ruhaanb622/group-portfolio/issues/3).
-  - Maintain one owner per task and one active card per person.
-  - Record blockers and their resolutions.
-  - Contribute development work after the team approves a project direction.
-
-  <h2>Function and Purpose</h2>
-
-  <div class="evidence-note">
-    The team has not selected or approved a program direction yet. The user,
-    problem statement, success statement, and out-of-scope statement will be
-    documented here only after that decision is made.
-  </div>
-
-  <h2>Evidence to add later</h2>
-
-  <div class="evidence-table">
-
-  | Required evidence | Status |
-  |---|---|
-  | Team-approved project direction and problem statement | Add after approval |
-  | Kanban board link | Add after issue #3 is completed |
-  | Idea and prototype artifacts | Add after they are created |
-  | My implementation issue and pull request | Add after development begins |
-  | My algorithmic or logic-based contribution | Add after implementation |
-  | Link to the code proving my contribution | Add after implementation |
-  | Test or demo confirming expected behavior | Add after testing |
-  | Blocked task and team resolution | Add when a real blocker occurs |
-  | Three user actions and expected outputs | Add after program purpose is defined |
-
-  </div>
+  <section class="evidence-section" aria-labelledby="later-evidence">
+    <div class="section-heading">
+      <h2 id="later-evidence">Evidence to add later</h2>
+      <p>These items remain intentionally incomplete and will be updated only when real evidence exists.</p>
+    </div>
+    <div class="future-grid">
+      <article class="future-card">
+        <div><h3>Project direction</h3><p>Team-approved user, problem, success statement, and scope.</p></div>
+        <span class="status later">Later</span>
+      </article>
+      <article class="future-card">
+        <div><h3>Kanban board</h3><p>Link after issue #3 is completed.</p></div>
+        <span class="status later">Later</span>
+      </article>
+      <article class="future-card">
+        <div><h3>Idea and prototype</h3><p>Storyboard, wireframe, mockup, or other approved artifacts.</p></div>
+        <span class="status later">Later</span>
+      </article>
+      <article class="future-card">
+        <div><h3>Implementation</h3><p>My development issue, branch, code, and reviewed pull request.</p></div>
+        <span class="status later">Later</span>
+      </article>
+      <article class="future-card">
+        <div><h3>Logic contribution</h3><p>My algorithmic feature and direct link to its implementation.</p></div>
+        <span class="status later">Later</span>
+      </article>
+      <article class="future-card">
+        <div><h3>Test or demo</h3><p>Evidence confirming that my contribution behaves as expected.</p></div>
+        <span class="status later">Later</span>
+      </article>
+      <article class="future-card">
+        <div><h3>Blocker and resolution</h3><p>A real blocked task and how the team resolved it.</p></div>
+        <span class="status later">Later</span>
+      </article>
+      <article class="future-card">
+        <div><h3>User actions</h3><p>Three user actions and their expected program outputs.</p></div>
+        <span class="status later">Later</span>
+      </article>
+    </div>
+  </section>
 </div>
