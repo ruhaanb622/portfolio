@@ -170,7 +170,7 @@ show_reading_time: false
 }
 </style>
 
-<div class="portfolio-home" markdown="1">
+<div class="portfolio-home">
 
 <div class="portfolio-hero">
   <div class="portfolio-header">AP Computer Science Principles · 2026–2027</div>
@@ -214,15 +214,11 @@ show_reading_time: false
   </a>
 </div>
 
-<br>
-
----
+<hr>
 
 <section class="portfolio-section">
-
-## GitHub Pages learning map
-
-> Six connected topics explain how this portfolio works as a system—from experimenting in notebooks to building and extending the published site.
+  <h2>GitHub Pages learning map</h2>
+  <p>Six connected topics explain how this portfolio works as a system—from experimenting in notebooks to building and extending the published site.</p>
 
 <div class="portfolio-grid">
   <div class="portfolio-card accent-green">
@@ -265,15 +261,11 @@ show_reading_time: false
 
 </section>
 
-<br>
-
----
+<hr>
 
 <section class="portfolio-section">
-
-## My development loop
-
-> A repeatable workflow connects the editor, version control, automation, and the published portfolio.
+  <h2>My development loop</h2>
+  <p>A repeatable workflow connects the editor, version control, automation, and the published portfolio.</p>
 
 <div class="portfolio-flow" aria-label="Development workflow">
   <div class="portfolio-step"><strong>1 · Plan</strong><span>Issue and evidence</span></div>
@@ -285,15 +277,11 @@ show_reading_time: false
 
 </section>
 
-<br>
-
----
+<hr>
 
 <section class="portfolio-section">
-
-## Development environment
-
-> These tools support writing, testing, versioning, publishing, and troubleshooting.
+  <h2>Development environment</h2>
+  <p>These tools support writing, testing, versioning, publishing, and troubleshooting.</p>
 
 <div class="portfolio-grid cols-4">
   <div class="portfolio-card accent-green">
@@ -324,15 +312,11 @@ show_reading_time: false
 
 </section>
 
-<br>
-
----
+<hr>
 
 <section class="portfolio-section">
-
-## Selected evidence
-
-> Working pages and documentation that show coding, design, debugging, and reflection.
+  <h2>Selected evidence</h2>
+  <p>Working pages and documentation that show coding, design, debugging, and reflection.</p>
 
 <div class="portfolio-grid">
   <div class="portfolio-card accent-green">
