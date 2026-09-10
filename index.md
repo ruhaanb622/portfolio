@@ -170,7 +170,7 @@ show_reading_time: false
 }
 </style>
 
-<div class="portfolio-home">
+<div class="portfolio-home" markdown="1">
 
 <div class="portfolio-hero">
   <div class="portfolio-header">AP Computer Science Principles · 2026–2027</div>
