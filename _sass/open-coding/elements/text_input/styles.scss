@@ -2,8 +2,8 @@
 @import "../../materials/main.scss";
 
 // for the various styles, like a gradient styled input
+input.ocs__input.gradient,
 input.gradientInput {
-    @extend input;
     background-image: $gradient1;
 }
 
