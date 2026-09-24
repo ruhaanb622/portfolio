@@ -416,7 +416,27 @@ class UiRunner:
         )
 
     def rendered_markup_lines(self) -> list[str]:
-        """Build the final HTML/script wrapper markup inserted into rendered markdown."""
+        """Build static markup or an interactive HTML preview for opted-in lessons."""
+        if self.options.get('interactive'):
+            capture_id = re.sub(r'[^a-zA-Z0-9_]', '_', self.runner_id)
+            challenge_name = f'ui_challenge_{capture_id}'
+            code_name = f'ui_html_{capture_id}'
+            return [
+                '',
+                '{% capture ' + challenge_name + ' %}',
+                self.description,
+                '{% endcapture %}',
+                '{% capture ' + code_name + ' %}',
+                self.html,
+                '{% endcapture %}',
+                '{% include runners/ui.html',
+                '   runner_id="' + self.runner_id + '"',
+                '   challenge=' + challenge_name,
+                '   code=' + code_name,
+                '   render_mode="html"',
+                '%}',
+                '',
+            ]
         return [
             '<div class="ui-runner">',
             self.html,
