@@ -416,8 +416,12 @@ class UiRunner:
         )
 
     def rendered_markup_lines(self) -> list[str]:
-        """Build static markup or an interactive HTML preview for opted-in lessons."""
+        """Build static markup or an interactive HTML/JavaScript preview."""
         if self.options.get('interactive'):
+            render_mode = self.options.get('render_mode', 'html')
+            if render_mode not in ('html', 'javascript'):
+                render_mode = 'html'
+            runner_code = self.script if render_mode == 'javascript' else self.html
             capture_id = re.sub(r'[^a-zA-Z0-9_]', '_', self.runner_id)
             challenge_name = f'ui_challenge_{capture_id}'
             code_name = f'ui_html_{capture_id}'
@@ -427,13 +431,13 @@ class UiRunner:
                 self.description,
                 '{% endcapture %}',
                 '{% capture ' + code_name + ' %}',
-                self.html,
+                runner_code,
                 '{% endcapture %}',
                 '{% include runners/ui.html',
                 '   runner_id="' + self.runner_id + '"',
                 '   challenge=' + challenge_name,
                 '   code=' + code_name,
-                '   render_mode="html"',
+                '   render_mode="' + render_mode + '"',
                 '%}',
                 '',
             ]
