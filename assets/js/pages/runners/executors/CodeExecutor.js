@@ -48,12 +48,53 @@ export class CodeExecutor {
         execTimeSpan.textContent = `⏱Execution time: ${Date.now() - startTime}ms`;
       }
     } catch (err) {
-      if (lang === 'javascript' && isLocalhost) {
+      if (lang === 'python') {
+        await this.runPythonBrowserFallback(code, startTime, err);
+      } else if (lang === 'javascript' && isLocalhost) {
         this.runJavaScriptFallback(code, startTime);
       } else {
         outputDiv.textContent = 'Error: ' + err.message;
         if (execTimeSpan) execTimeSpan.textContent = '';
       }
+    }
+  }
+
+  async runPythonBrowserFallback(code, startTime, networkError) {
+    const outputDiv = this.outputElement;
+    const execTimeSpan = this.execTimeElement;
+
+    try {
+      outputDiv.textContent = '⏳ Backend unavailable; loading browser Python...';
+
+      if (!CodeExecutor.pyodidePromise) {
+        CodeExecutor.pyodidePromise = import('https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.mjs')
+          .then(({ loadPyodide }) => loadPyodide({
+            indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.27.7/full/'
+          }));
+      }
+
+      const pyodide = await CodeExecutor.pyodidePromise;
+      const stdout = [];
+      const stderr = [];
+
+      pyodide.setStdout({ batched: (text) => stdout.push(text) });
+      pyodide.setStderr({ batched: (text) => stderr.push(text) });
+
+      const result = await pyodide.runPythonAsync(code);
+
+      const lines = [...stdout, ...stderr];
+      if (result !== undefined && result !== null && lines.length === 0) {
+        lines.push(String(result));
+      }
+
+      outputDiv.textContent = lines.length > 0 ? lines.join('\n') : '[no output]';
+      if (execTimeSpan) {
+        execTimeSpan.textContent = `⏱Execution time: ${Date.now() - startTime}ms (browser fallback)`;
+      }
+    } catch (fallbackError) {
+      const backendMessage = networkError?.message ? `Backend: ${networkError.message}. ` : '';
+      outputDiv.textContent = `Error: ${backendMessage}Browser Python fallback: ${fallbackError.message}`;
+      if (execTimeSpan) execTimeSpan.textContent = '';
     }
   }
 
