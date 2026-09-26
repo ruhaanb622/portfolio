@@ -1304,10 +1304,17 @@ def convert_notebook_to_markdown_with_front_matter(notebook_file):
         # Inject code-runner includes (and submit buttons if challenge_submit is enabled)
         markdown = inject_code_runners(markdown, notebook, front_matter)
         
+        yaml_content = yaml.safe_dump(
+            front_matter,
+            default_flow_style=False,
+            allow_unicode=True,
+            sort_keys=False,
+        )
+
         front_matter_content = (
             "---\n"
-            + "\n".join(f"{key}: {value}" for key, value in front_matter.items())
-            + "\n---\n\n"
+            + yaml_content
+            + "---\n\n"
         )
         markdown_with_front_matter = front_matter_content + markdown
         destination_path = get_relative_output_path(notebook_file)
