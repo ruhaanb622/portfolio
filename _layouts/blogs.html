@@ -16,18 +16,21 @@ layout: opencs
   {% endif %}
 {% endfor %}
 
-<!-- Sort posts by rank, then date, put posts with "sticky_posts: 1" front matter at the top -->
-{% assign grouped_posts = posts | group_by: "sticky_rank" | sort: "name", "last" %}
+<!-- Put ranked homework first in numeric sticky_rank order, then all other posts by date. -->
 {% assign sticky_posts = '' | split:'' %}
 {% assign non_sticky_posts = '' | split:'' %}
-<!-- Split posts into sticky and non-sticky -->
-{% for gp in grouped_posts %}
-  {%- if gp.name == "" -%}
-    {% assign non_sticky_posts = gp.items | sort: "date" | reverse %}
-  {%- else %}
-    {% assign sticky_posts = sticky_posts | concat: gp.items %}
-  {%- endif %}
+
+{% for post in posts %}
+  {% if post.sticky_rank %}
+    {% assign sticky_posts = sticky_posts | push: post %}
+  {% else %}
+    {% assign non_sticky_posts = non_sticky_posts | push: post %}
+  {% endif %}
 {% endfor %}
+
+{% assign sticky_posts = sticky_posts | sort: "sticky_rank" %}
+{% assign non_sticky_posts = non_sticky_posts | sort: "date" | reverse %}
+{% assign posts = sticky_posts | concat: non_sticky_posts %}
 
 <!-- Generate Card for each Post -->
 {% assign sticky_posts = sticky_posts | sort: "sticky_rank", "last" %}
