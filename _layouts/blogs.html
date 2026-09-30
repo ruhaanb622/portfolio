@@ -16,25 +16,25 @@ layout: opencs
   {% endif %}
 {% endfor %}
 
-<!-- Put ranked homework first in numeric sticky_rank order, then all other posts by date. -->
-{% assign sticky_posts = '' | split:'' %}
-{% assign non_sticky_posts = '' | split:'' %}
+<!-- Keep homework together and sort it by its numbered title.
+     Titles such as "Python 3.01: ..." through "Python 3.17: ..." sort
+     naturally before "SASS: ...", giving the portfolio a stable lesson order. -->
+{% assign homework_posts = '' | split:'' %}
+{% assign non_homework_posts = '' | split:'' %}
 
 {% for post in posts %}
-  {% if post.sticky_rank %}
-    {% assign sticky_posts = sticky_posts | push: post %}
+  {% if post.categories contains "HW" %}
+    {% assign homework_posts = homework_posts | push: post %}
   {% else %}
-    {% assign non_sticky_posts = non_sticky_posts | push: post %}
+    {% assign non_homework_posts = non_homework_posts | push: post %}
   {% endif %}
 {% endfor %}
 
-{% assign sticky_posts = sticky_posts | sort: "sticky_rank" %}
-{% assign non_sticky_posts = non_sticky_posts | sort: "date" | reverse %}
-{% assign posts = sticky_posts | concat: non_sticky_posts %}
+{% assign homework_posts = homework_posts | sort: "title" %}
+{% assign non_homework_posts = non_homework_posts | sort: "date" | reverse %}
+{% assign posts = homework_posts | concat: non_homework_posts %}
 
 <!-- Generate Card for each Post -->
-{% assign sticky_posts = sticky_posts | sort: "sticky_rank", "last" %}
-{% assign posts = sticky_posts | concat: non_sticky_posts %}
 {%- if posts.size > 0 -%}
   {%- if page.list_title -%}
     <h2 class="post-list-heading">{{ page.list_title }}</h2>
