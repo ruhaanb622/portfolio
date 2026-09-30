@@ -74,6 +74,19 @@ export class CodeExecutor {
       }
 
       const pyodide = await CodeExecutor.pyodidePromise;
+
+      // Flask is not bundled with Pyodide by default. If a lesson imports Flask,
+      // install it in the browser runtime so the original Flask exercise can
+      // still run when the localhost Python backend is unavailable.
+      if (/^\s*(from\s+flask\s+import|import\s+flask\b)/m.test(code)) {
+        outputDiv.textContent = '⏳ Backend unavailable; loading Flask in browser Python...';
+        await pyodide.loadPackage('micropip');
+        await pyodide.runPythonAsync([
+          'import micropip',
+          'await micropip.install("flask")'
+        ].join('\n'));
+      }
+
       const stdout = [];
       const stderr = [];
 
