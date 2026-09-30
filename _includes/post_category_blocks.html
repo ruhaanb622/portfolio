@@ -19,7 +19,12 @@
             <div class="col-8 d-table-cell p-3">
 
                 <h3 id="{{ category }}"><a href="#{{ category }}">{{ category }}</a></h3>
-                {% for post in site.categories[category] %}
+                {% if category == "HW" %}
+                    {% assign category_posts = site.categories[category] | sort: "title" %}
+                {% else %}
+                    {% assign category_posts = site.categories[category] %}
+                {% endif %}
+                {% for post in category_posts %}
                 {% if post.hide != true %}
                 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
                 <!-- Post meta information with title and date -->
